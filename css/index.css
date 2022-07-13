@@ -1,0 +1,55 @@
+:root{
+    --mainfont: 'Roboto', sans-serif;
+    --secondaryfont: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    border: red solid 5px;
+    margin: 0;
+    font-family: var(--mainfont);
+    background: #202020;
+}
+
+.wrapper{
+    max-inline-size: 1664px;
+    margin: auto;
+    border: 5px solid green;
+}
+
+.hero h1{
+    font-family: var(--secondaryfont);
+    font-size: 42.1669px;
+    line-height: 49px;
+    font-weight: bold;
+    color: red;
+    margin-block-end: 8px;
+}
+
+.hero p{
+    font-family: var(--mainfont);
+    color: green;
+    font-size: 16.8668px;
+    line-height: 25px;
+    font-weight: normal;
+}
+
+p, h1 {
+    margin: 0;
+}
+
+img{
+    max-inline-size: 100%;
+}
+
+button{
+    font-family: var(--mainfont);
+    font-weight: bold;
+    font-size: 14.75px;
+    line-height: 17px;
+    padding-inline: 33.73px;
+    padding-block: 16.86px;
+    border-radius: 52.71px;
+    background: #1B90FC;
+    color: white;
+
+}
