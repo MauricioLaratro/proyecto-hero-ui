@@ -1,19 +1,18 @@
 :root{
     --mainfont: 'Roboto', sans-serif;
     --secondaryfont: 'Roboto Condensed', sans-serif;
+    --primarycolor: #1B90FC;
+    --mainbackgroundcolor: #202020;
 }
 
 body {
-    border: red solid 5px;
     margin: 0;
     font-family: var(--mainfont);
-    background: #202020;
 }
 
 .wrapper{
     max-inline-size: 1664px;
     margin: auto;
-    border: 5px solid green;
 }
 
 .hero h1{
@@ -21,16 +20,15 @@ body {
     font-size: 42.1669px;
     line-height: 49px;
     font-weight: bold;
-    color: red;
     margin-block-end: 8px;
 }
 
 .hero p{
     font-family: var(--mainfont);
-    color: green;
     font-size: 16.8668px;
     line-height: 25px;
     font-weight: normal;
+    margin-block-end: 25.3px;
 }
 
 p, h1 {
@@ -49,7 +47,51 @@ button{
     padding-inline: 33.73px;
     padding-block: 16.86px;
     border-radius: 52.71px;
-    background: #1B90FC;
+    background: var(--primarycolor);
     color: white;
+    border: none;
+    /* border none es para que no tenga ese contorno negro que traen por defecto los buttons */
+    cursor: pointer;
+    text-transform: uppercase;
+    /* esto ultimo es para que se figure con mayusculas */
+}
 
+.card{
+    max-inline-size: 427.85px;
+    color: white;
+    /* esto es para que genere ese salto de linea despues de la coma en el texto */
+    position: relative;
+    z-index: 2;
+    /* se cambia la position a relative para poder usar z-index, usamos z index aca y en pseudo elemento de hero before para poder posicionar uno sobre otro o viceversa */
+}
+
+
+.hero-content{
+    display: flex;
+    block-size: 768px;
+    align-items: center;
+    /* todo esto se hace para que el hijo directo de hero-content, que es "card", herede el display y se ajusten a las demas caracteristicas. Y asi podemos hacer que este centrado verticalmente y pegado a la izquierda */
+}
+
+.hero{
+    background-image: url(../images/loki-image.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--mainbackgroundcolor);
+    position: relative;
+    /* cambiamos la positon a relative para que el pseudo elemento hero before pueda tenes su position absolute relativa a este elemento hero */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 128px), 0 100%);
+    /* clip-path se utiliza para generar cortes y se puede dar valores de diferentes pormas, la que utilizamos polygon utiliza valores dentro de los ejes x e y moviendose en cuadrado, por eso son 4 valores separados por comas, utilizamos porcentajes para que sea mas responsive que si utilzacemos pxs, la funcion de calc que utilizamos sirve para que el corte comience desde el 100% del eje x en ese lado menos 128px, dependiendo del diseño lo podemos utilizar asi para que sea exacto y resposinve */
+}
+
+.hero::before{
+    content: '';
+    inline-size: 50%;
+    display: block;
+    background-color: var(--mainbackgroundcolor);
+    position: absolute;
+    inset-block: 0;
+    z-index: 1;
+    clip-path: polygon(0 0 , calc(100% - 154px) 0, 100% 100%, 0 100%);
+    /* utilizamos 100% en el calc porque el pseudo elemento de before ya tiene un inline size de 50%, todos los calculos se realizaron sobre el tamaño del elemento */
 }
